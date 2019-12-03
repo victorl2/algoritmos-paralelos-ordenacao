@@ -6,7 +6,7 @@
 
 /**
  * Compilar: mpicc -o merge_paralelo merge_paralelo.c
- * Executar: mpiexec -np 2 ./merge_paraleloclear
+ * Executar: mpiexec -np 4 ./merge_paraleloclear
  */
 
 // Define Tamanho do Array a ser ordenado

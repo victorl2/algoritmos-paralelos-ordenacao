@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TAM 16
+#define TAM 1024
 int DOWN = 1, UP = -1;
 
 void geraAleatorios(int numero[])
@@ -66,8 +66,8 @@ int main(void)
 
     geraAleatorios(valores);
     bitonic(valores);
-    for (i = 0; i < TAM; i++)
-    {
-        printf("%d: %d\n", i, valores[i]);
-    }
+    // for (i = 0; i < TAM; i++)
+    // {
+    //     printf("%d: %d\n", i, valores[i]);
+    // }
 }

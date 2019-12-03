@@ -19,7 +19,8 @@ void geraAleatorios(int numero[])
 void swap(int a[], int i, int j, int dir)
 {
     int test = (dir == DOWN && a[i] < a[j]) || (dir == UP && a[i] > a[j]);
-    if (test) {
+    if (test)
+    {
         int k = a[j];
         a[j] = a[i];
         a[i] = k;
@@ -31,23 +32,26 @@ void bitonic_internal(int num[], int ini, int tam, int dir)
     int passo, i, j;
     for (passo = tam; passo > 1; passo /= 2)
     {
-        //#pragma omp parallel for shared(num)
-        for(j = 0; j < tam/passo; j++){
-            for (i = passo*j; i < passo*j + passo/2; i++)
+        for (j = 0; j < tam / passo; j++)
+        {
+            for (i = passo * j; i < passo * j + passo / 2; i++)
             {
-                swap(num, ini+i, ini+i + passo/2, dir);
+                swap(num, ini + i, ini + i + passo / 2, dir);
             }
         }
     }
 }
 
-void bitonic(int num[]) {
-    int passo=2, i, dir = UP;    
+void bitonic(int num[])
+{
+    int passo, i, dir = UP;
     for (passo = 2; passo <= TAM; passo *= 2)
     {
-        //#pragma omp parallel for shared(num)
-        for(i=0; i< TAM; i+=passo) {
-            if(i == 0 && passo != 2) {
+        #pragma omp parallel for shared(num)
+        for (i = 0; i < TAM; i += passo)
+        {
+            if (i == 0 && passo != 2)
+            {
                 dir = DOWN;
             }
             bitonic_internal(num, i, passo, dir);
